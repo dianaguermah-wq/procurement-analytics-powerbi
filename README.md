@@ -1,10 +1,37 @@
 # Procurement Timing & Vendor Dependence Analysis
+## Repository Structure
+
+- `README.md` — project overview and dashboard preview
+- `assets/` — dashboard screenshots
+- `sql/` — SQL scripts for marts and supporting logic
+- `powerbi/` — Power BI file and supporting exports
+
+## Methodology
+
+- Built SQL mart tables in PostgreSQL as the analytical source of truth
+- Modeled a star schema in Power BI
+- Created weighted measures in DAX to avoid misleading averages
+- Analyzed procurement across timing, category, and vendor dimensions
+
+## Why It Matters
+
+This analysis helps surface:
+- year-end spending concentration
+- category-specific purchasing patterns
+- supplier dependency risk
+
+These insights can support better planning, contract strategy, and operational predictability.
+
 
 This project analyzes procurement behavior across three dimensions: 
 - Timing (when spend occurs)
 - Category (what is being purchased)
 - Vendor (who supplies it)
 The goal is to identify patterns such as late-year spending concentration, category-driven timing, and supplier dependence.
+
+Business Question
+
+How can procurement data be analyzed beyond total spend to identify timing concentration, category-driven patterns, and supplier dependence?
 
 Key Insights
 
