@@ -84,7 +84,7 @@ This analysis helps organizations:
 
 ## 🧩 Data Model
 
-![Star Schema](powerbi/powerbi_starschema.png)
+![Star Schema](assets/powerbi_starschema.png)
 
 - SQL marts used as the analytical foundation  
 - Dimension tables created for slicing and filtering  
@@ -118,7 +118,7 @@ These marts serve as the foundation for all Power BI visuals.
 
 1. Clone the repository  
 2. Review SQL logic in `/sql`  
-3. Open Power BI file (if included)  
+3. Open Power BI file 
 4. Explore dashboards and insights  
 
 ---
