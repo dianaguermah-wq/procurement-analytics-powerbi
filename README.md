@@ -59,3 +59,19 @@ Data Modeling
 - SQL-based mart tables used as single source of truth
 - Star schema implemented in Power BI
 - Weighted measures used to avoid aggregation bias
+
+## SQL Logic
+
+Core transformations and aggregations were implemented in PostgreSQL using SQL mart tables:
+
+- `mart_po_timing.sql` — department-level timing metrics for final 30 / 60 / 90 day spend
+- `mart_category_timing.sql` — category and subcategory timing sensitivity
+- `mart_vendor_concentration.sql` — department-level top 10 vendor concentration
+
+These marts serve as the analytical source of truth for the Power BI model.
+
+## Star Schema
+
+Dimensions and Facts tables used to create relationships between the vast amount of data
+![Power BI Model](powerbi/powerbi_starschema.png)
+
