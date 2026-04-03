@@ -1,49 +1,75 @@
-# Procurement Timing & Vendor Dependence Analysis
-## Repository Structure
+# 📊 Procurement Timing & Vendor Dependence Analysis
 
-- `README.md` — project overview and dashboard preview
-- `assets/` — dashboard screenshots
-- `sql/` — SQL scripts for marts and supporting logic
-- `powerbi/` — Power BI file and supporting exports
+This project analyzes procurement behavior across **timing, category, and vendor dimensions** to identify structural spending patterns that are not visible through total spend alone.
 
-## Methodology
-
-- Built SQL mart tables in PostgreSQL as the analytical source of truth
-- Modeled a star schema in Power BI
-- Created weighted measures in DAX to avoid misleading averages
-- Analyzed procurement across timing, category, and vendor dimensions
-
-## Why It Matters
-
-This analysis helps surface:
-- year-end spending concentration
-- category-specific purchasing patterns
+The goal is to surface:
+- late-year spending concentration
+- category-driven purchasing behavior
 - supplier dependency risk
 
-These insights can support better planning, contract strategy, and operational predictability.
+---
 
+## 🎯 Business Problem
 
-This project analyzes procurement behavior across three dimensions: 
-- Timing (when spend occurs)
-- Category (what is being purchased)
-- Vendor (who supplies it)
-The goal is to identify patterns such as late-year spending concentration, category-driven timing, and supplier dependence.
+Organizations often evaluate procurement performance based on total spend, but this approach hides critical behavioral patterns.
 
-Business Question
+This project answers:
 
-How can procurement data be analyzed beyond total spend to identify timing concentration, category-driven patterns, and supplier dependence?
+- How much procurement spend occurs near fiscal year-end?
+- Which departments exhibit high late-year concentration?
+- Which categories drive year-end purchasing behavior?
+- How dependent are departments on a small group of vendors?
 
-Key Insights
+---
 
-- ~23% of spend occurs in the final 90 days
-- Certain departments show high late-year concentration
-- Specific categories drive year-end purchasing
-- Vendor spend is highly concentrated
+## 🧱 Approach
 
-Tools
-PostgreSQL | Power BI | SQL | DAX
+This project follows an end-to-end analytics workflow:
 
-## Dashboard Preview
+### 1. Data Modeling (PostgreSQL)
+
+- Built SQL-based mart tables as the **single source of truth**
+- Applied consistent fiscal year filtering and department mapping
+- Designed aggregation logic for timing and vendor concentration
+
+### 2. Semantic Layer (Power BI)
+
+- Implemented a **star schema model**
+- Created **weighted measures** to ensure accurate aggregation
+- Avoided recalculating business logic in DAX
+
+### 3. Visualization
+
+- Built interactive dashboards to analyze:
+  - procurement timing trends
+  - category-level sensitivity
+  - vendor concentration
+
+---
+
+## 📈 Key Insights
+
+- ~23% of procurement spend occurs in the **final 90 days** of the fiscal year  
+- Certain departments show both **high spend and high late-year concentration**  
+- Specific categories consistently drive **year-end purchasing spikes**  
+- Vendor spend is highly concentrated among a **small subset of suppliers**  
+
+These patterns highlight potential inefficiencies in planning, budgeting, and supplier strategy.
+
+---
+
+## 🧠 Why This Matters
+
+This analysis helps organizations:
+
+- identify late-year spending risk  
+- improve procurement planning and budget allocation  
+- reduce dependency on a small number of vendors  
+- better understand category-level purchasing behavior  
+
+---
+
+## 🖥️ Dashboard Preview
 
 ### Late-Year Procurement Timing
 ![Timing Dashboard](assets/page1_timing.png)
@@ -51,27 +77,57 @@ PostgreSQL | Power BI | SQL | DAX
 ### Category Timing Sensitivity
 ![Category Dashboard](assets/page2_category.png)
 
-### Vendor Concentration
+### Vendor Spend Concentration
 ![Vendor Dashboard](assets/page3_vendor.png)
 
-Data Modeling
+---
 
-- SQL-based mart tables used as single source of truth
-- Star schema implemented in Power BI
-- Weighted measures used to avoid aggregation bias
+## 🧩 Data Model
 
-## SQL Logic
+![Star Schema](powerbi/powerbi_starschema.png)
 
-Core transformations and aggregations were implemented in PostgreSQL using SQL mart tables:
+- SQL marts used as the analytical foundation  
+- Dimension tables created for slicing and filtering  
+- No fact-to-fact relationships  
+- Single-direction filtering enforced  
 
-- `mart_po_timing.sql` — department-level timing metrics for final 30 / 60 / 90 day spend
-- `mart_category_timing.sql` — category and subcategory timing sensitivity
-- `mart_vendor_concentration.sql` — department-level top 10 vendor concentration
+---
 
-These marts serve as the analytical source of truth for the Power BI model.
+## 🧾 SQL Logic
 
-## Star Schema
+Core transformations were implemented in PostgreSQL:
 
-Dimensions and Facts tables used to create relationships between the vast amount of data
-![Power BI Model](powerbi/powerbi_starschema.png)
+- `mart_po_timing.sql` → Department-level timing metrics  
+- `mart_category_timing.sql` → Category timing sensitivity  
+- `mart_vendor_concentration.sql` → Vendor concentration and dependency  
 
+These marts serve as the foundation for all Power BI visuals.
+
+---
+
+## 🛠️ Tools Used
+
+- PostgreSQL  
+- SQL  
+- Power BI  
+- DAX  
+
+---
+
+## 🚀 How to Use
+
+1. Clone the repository  
+2. Review SQL logic in `/sql`  
+3. Open Power BI file (if included)  
+4. Explore dashboards and insights  
+
+---
+
+## 📌 Project Takeaway
+
+This project demonstrates the ability to:
+
+- translate business questions into analytical models  
+- design scalable SQL-based data marts  
+- build clean semantic models in Power BI  
+- communicate insights through structured dashboards  
