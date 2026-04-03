@@ -16,8 +16,16 @@ Key Insights
 Tools
 PostgreSQL | Power BI | SQL | DAX
 
-Dashboard Preview
+## Dashboard Preview
 
+### Late-Year Procurement Timing
+![Timing Dashboard](assets/page1_timing.png)
+
+### Category Timing Sensitivity
+![Category Dashboard](assets/page2_category.png)
+
+### Vendor Concentration
+![Vendor Dashboard](assets/page3_vendor.png)
 
 Data Modeling
 
